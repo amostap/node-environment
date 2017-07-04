@@ -7,14 +7,16 @@
   "license": "MIT",
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
-    "start": "npm-run-all --parallel security-check open:src lint:watch test:watch",
+    "start": "npm-run-all --parallel open:src lint:watch test:watch start-mockapi",
     "open:src": "babel-node buildScripts/srcServer.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "security-check": "nsp check",
     "lint": "esw webpack.config.* src buildScripts --color",
     "lint:watch": "npm run lint -- --watch",
     "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "generate-mock-data": "babel-node buildScripts/generateMockData",
+    "prestart-mockapi": "npm run generate-mock-data",
+    "start-mockapi": "json-server --watch src/api/db.json --port 3002"
   },
   "dependencies": {
     "whatwg-fetch": "^1.0.0"
@@ -43,7 +45,6 @@
     "mocha": "^3.1.2",
     "nock": "^8.1.0",
     "npm-run-all": "^3.1.1",
-    "nsp": "^2.6.2",
     "numeral": "^1.5.3",
     "open": "^0.0.5",
     "rimraf": "^2.5.4",
