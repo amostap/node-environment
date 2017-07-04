@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/index.css"],"names":[],"mappings":"AAAA,KACE,UAAa,CAGf,GACE,WAAa","file":"main.890abd7cb527b02cc995828b82c4dbb5.css","sourcesContent":["body {\r\n  color: black;\r\n}\r\n\r\ntd {\r\n  padding: 5px;\r\n}\r\n\n\n\n// WEBPACK FOOTER //\n// ./src/index.css"],"sourceRoot":""}
