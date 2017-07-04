@@ -5,7 +5,7 @@ import open from 'open';
 import webpack from 'webpack';
 import config from '../webpack.config.dev';
 
-const port = 3000;
+const port = 3001;
 const app = express();
 const compiler = webpack(config);
 
@@ -16,6 +16,13 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../src/index.html'));
+})
+
+app.get('/users', function(req, res) {
+  res.json([
+    {"id": 1, "firstName": "Alex", "lastName": "Ostapenko"},
+    {"id": 2, "firstName": "Yulia", "lastName": "Shvedenko"}
+  ]);
 })
 
 app.listen(port, function(err) {
